@@ -21,3 +21,15 @@ object Exercise2 extends App:
     case Cons(h, t) => foldLeft(t)(fun(defaultValue, h))(fun)
     case Nil() => defaultValue
 
+  private def getCourses(sequence: Sequence[Person]): Sequence[Int] =
+    @tailrec
+    def helper(sequence: Sequence[Person])(acc: Sequence[Int]): Sequence[Int] = (sequence,acc) match
+      case (Cons(h,t), Nil()) => helper(t)(Cons(1, Nil()))
+      case (Cons(h,t), Cons(h2,_)) => helper(t)(Cons(h2, Cons(1, Nil())))
+      case _ => acc
+    helper(sequence)(Nil())
+
+  def getNumberOfCourses(sequence: Sequence[Person]): Int =
+    foldLeft(getCourses(filter(sequence)(s => s.isInstanceOf[Teacher])))(0)(_ + _)
+  
+  

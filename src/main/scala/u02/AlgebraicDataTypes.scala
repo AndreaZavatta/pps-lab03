@@ -5,7 +5,7 @@ object AlgebraicDataTypes extends App:
   enum Person: // a sum type defined by enumerating various cases
     case Student(name: String, year: Int)
     case Teacher(name: String, course: String)
-
+  
   def name(p: Person): String = p match
     case Person.Student(n, _) => n
     case Person.Teacher(n, _) => n

@@ -31,3 +31,8 @@ class Exercise2Test:
   def testFoldLeftSum() =
     val lst = Cons(3, Cons(7, Cons(1, Cons(5, Nil()))))
     assertEquals(16, foldLeft(lst)(0)(_ + _))
+
+  @Test
+  def testNumberOfCourses() =
+    val people = Cons(Teacher("Paola", "Italian"), Cons(Teacher("Matteo", "Computer Science"), Cons(Student("Marco", 2001), Nil())))
+    assertEquals(2, getNumberOfCourses(people))
